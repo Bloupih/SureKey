@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SureKeyProtector</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="your_id_string">L\'identifiant unique de votre telephone.</string>
+    <string name="help_string">Cette application vous permet de sécuriser l\'accès a vos espaces web perso via la génération d\'un code unique.\r Pour se faire, vous devez associer cet appareil avec votre compte sur le site web. Vous pourrez ensuite utiliser cette application.</string>
+    <string name="newcode_button">Demander un nouveau code</string>
+    <string name="code">code unique</string>
+    <string name="connected">Vous êtes connecté !</string>
+    <string name="disconnect_button">Se deconnecter</string>
+
+</resources>

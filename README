@@ -1,0 +1,68 @@
+
+SureKey
+
+SureKey est une application qui permet d'augmenter la sécurité lors de la connexion de l'un de vos utilisateur sur vos sites.
+
+Comment tester les applications :
+
+    Deployer l'application web. (cf : php artisan migrate & seed + Installation de Composer )
+    Installer sur votre telephone android (ou une VM) l'application SureKey.
+    Se connecter sur le site web avec les identifiants : Admin / admin
+    Dans les paramètres utilisateur (en haut à droite, cliquez sur "admin", section paramètres), ajoutez un nouveau device :
+        Identifiant unique: l'identifiant qui vous est donné par l'application android (en orange)
+        Les autres champs sont remplis automatiquement
+    Sur l'application Android, dans les parametres :
+        Pseudo : Admin
+        mot de passe : admin
+        Mot de passe device : le mot de passe généré sur le panel utilisateur après ajout du Device. (ex : 95cwk2g5z06tpc4e ) 
+    Appuyer sur "sign in". Si un toast "Connecté !" apparait après chargement, votre device est bien synchronisé avec votre compte web !
+
+
+A partir de maintenant, votre device est relié à votre compte. Deconnectez-vous du site web, et tentez de vous reconnecter avec les log : Admin/admin : cela vous retourne une erreur .
+Pour pouvoir vous connecter sur le site , vous devez utiliser l'application Android pour generer un nouveau code ( celui en rouge ) qui ne pourra être utilisé qu'une seule fois.
+Après avoir obtenu votre code, tentez de vous connecter à nouveau en entrant dans le troisième champ du formulaire web le code obtenu. Cela fonctionne , et le code a expiré des lors que vous l'avez utilisé.
+Si vous generez plusieurs codes à la suite, seul le dernier code généré sera utilisable. Les précédents expirent à chaque fois qu'un nouveau code est généré
+
+Si vous supprimez le device dans vos paramètres utilisateurs, vous n'aurez plus besoin de l'application android pour vous connecter.
+Si vous ajoutez plusieurs device, vous pourrez obtenir des codes uniques à partir de chacun d'entre eux (vous devez tous les synchroniser en entrant le login / password / password_device adequat).
+Si vous supprimez un device et qu'il en reste un ou plus après suppression, vous ne pourrez pas vous connecter sans mot de passe à utilisation unique.
+
+Explications techniques
+
+Technos utilisés :
+
+    Application web :
+        Laravel4 ( PHP POO , Blade, Eloquent, Composer)
+        JSON
+        bdd Mysql(via PHPMyAdmin)
+        BootStrap3
+    Application Android
+        Java Android
+        XML
+
+Le processus de traitement / génération du mot de passe est le suivant :
+
+    Reception d'une requète GET du telephone contenant 3 parametres :
+        pseudo : le nom du compte
+        password : le mot de passe du compte (crypté)
+        device : l'identifiant unique du device
+    Si le pseudo est présent dans la db, et que le device existe et est associé au pseudo indiqué, on utilise le mot de passe du device pour décrypter le mot de passe du compte.
+    Si le couple login/decrypt(password) éxiste, on passe à la génération du mot de passe
+    le mot de passe est un objet Key :
+        id : l'id de la clef
+        content : la valeure de la clef . String(10) générée aléatoirement
+        accountid : le compte associé à cette clef
+        deviceid : la primary key du device qui a permis de générer cette clef
+        status : le status de la clef (1 = valide, 0 = expired)
+    la propriété "contenu", en clair dans la base, est cryptée avec un algorythme AES utilisant le mot de passe du device avant d'être retourné au format JSON.
+    le device récupère la clé au format JSON, la parse, puis la décrypte grâce au mot de passe du device. Enfin, il l'affiche
+    Si la connexion sur le site est validée avec cette clef fraichement crée , le status de la clef devient expiré ( 0 )
+
+
+Sources
+
+Interface et authentification simple : JF Erlem. (Erlem's Laravel tutorial : Erlem's blog
+
+ApiCrypter AES : cwill-dev. (Cwill-dev AES tutorial : Cwill-dev's blog
+
+Authentification renforcée, panel utilisateur et application android : Xpl0ze ( Videos / Site / Twitter )

@@ -1,0 +1,30 @@
+body {
+  background: #d7d7d7;
+  color: white; 
+}
+#form-login {
+    background: #463265;
+}
+
+.form-login-content h1 {
+    color: white;
+}
+
+#form-login li.active a {
+    background: #463265;
+}
+#form-login li.active a:hover {
+    background: #463265;
+}
+#form-login li a:hover {
+    color: #ffffff;
+    background: none;
+}
+
+.tabs {
+    background: #563d7c;
+}
+.tabs a {
+    background: #563d7c;
+    color: #ccbee2;
+}
