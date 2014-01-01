@@ -5,17 +5,17 @@ SureKey est une application qui permet d'augmenter la sécurité lors de la connex
 
 Comment tester les applications :
 
-    Deployer l'application web. (cf : php artisan migrate & seed + Installation de Composer )
-    Installer sur votre telephone android (ou une VM) l'application SureKey. <= PENSEZ A CHANGER LA CONSTANTE URL_SERVER qui se trouve dans la classe "MainActivity.class".
-    Se connecter sur le site web avec les identifiants : Admin / admin
-    Dans les paramètres utilisateur (en haut à droite, cliquez sur "admin", section paramètres), ajoutez un nouveau device :
-        Identifiant unique: l'identifiant qui vous est donné par l'application android (en orange)
-        Les autres champs sont remplis automatiquement
-    Sur l'application Android, dans les parametres :
-        Pseudo : Admin
-        mot de passe : admin
-        Mot de passe device : le mot de passe généré sur le panel utilisateur après ajout du Device. (ex : 95cwk2g5z06tpc4e ) 
-    Appuyer sur "sign in". Si un toast "Connecté !" apparait après chargement, votre device est bien synchronisé avec votre compte web !
+    1 - Deployer l'application web. (cf : php artisan migrate & seed + Installation de Composer )
+    2 - Installer sur votre telephone android (ou une VM) l'application SureKey. <= PENSEZ A CHANGER LA CONSTANTE URL_SERVER qui se trouve dans la classe "MainActivity.class".
+    3 - Se connecter sur le site web avec les identifiants : Admin / admin
+    4 - Dans les paramètres utilisateur (en haut à droite, cliquez sur "admin", section paramètres), ajoutez un nouveau device :
+        4.1 - Identifiant unique: l'identifiant qui vous est donné par l'application android (en orange)
+        4.2 - Les autres champs sont remplis automatiquement
+    5 - Sur l'application Android, dans les parametres :
+        5.1 -Pseudo : Admin
+        5.2 - mot de passe : admin
+        5.3 - Mot de passe device : le mot de passe généré sur le panel utilisateur après ajout du Device. (ex : 95cwk2g5z06tpc4e ) 
+    6 - Appuyer sur "sign in". Si un toast "Connecté !" apparait après chargement, votre device est bien synchronisé avec votre compte web !
 
 
 A partir de maintenant, votre device est relié à votre compte. Deconnectez-vous du site web, et tentez de vous reconnecter avec les log : Admin/admin : cela vous retourne une erreur .
@@ -61,8 +61,8 @@ Le processus de traitement / génération du mot de passe est le suivant :
 
 Sources
 
-Interface et authentification simple : JF Erlem. (Erlem's Laravel tutorial : Erlem's blog
+Interface et authentification simple : JF Erlem. (Erlem's Laravel tutorial : http://blog.erlem.fr/programmation/developpement-web/framework/33-laravel/63-laravel-4-cas-pratique-authentification
 
-ApiCrypter AES : cwill-dev. (Cwill-dev AES tutorial : Cwill-dev's blog
+ApiCrypter AES : cwill-dev. (Cwill-dev AES tutorial : http://blog.cwill-dev.com/2012/10/09/encryption-between-javaandroid-and-php/
 
-Authentification renforcée, panel utilisateur et application android : Xpl0ze ( Videos / Site / Twitter )
+Authentification renforcée, panel utilisateur et application android : Xpl0ze ( http://xpl0zion.com / http://youtube.com/TheXpl0ze / http://twitter.com/Bloupih )
