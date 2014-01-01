@@ -6,7 +6,7 @@ SureKey est une application qui permet d'augmenter la sécurité lors de la connex
 Comment tester les applications :
 
     Deployer l'application web. (cf : php artisan migrate & seed + Installation de Composer )
-    Installer sur votre telephone android (ou une VM) l'application SureKey.
+    Installer sur votre telephone android (ou une VM) l'application SureKey. <= PENSEZ A CHANGER LA CONSTANTE URL_SERVER qui se trouve dans la classe "MainActivity.class".
     Se connecter sur le site web avec les identifiants : Admin / admin
     Dans les paramètres utilisateur (en haut à droite, cliquez sur "admin", section paramètres), ajoutez un nouveau device :
         Identifiant unique: l'identifiant qui vous est donné par l'application android (en orange)
